@@ -15,7 +15,7 @@
 					<i class="bi bi-truck fs-4 me-2 text-primary"></i>
 					<span class="fw-bold">Emerging Logistics</span>
 				</a>
-				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navMenu">
@@ -192,6 +192,27 @@
 		<script>
 			// Small runtime to insert year
 			document.getElementById('year').textContent = new Date().getFullYear();
+
+			// Fallback: if Bootstrap's collapse isn't available or fails, toggle manually
+			(function(){
+				var toggler = document.querySelector('.navbar-toggler');
+				var nav = document.getElementById('navMenu');
+				if (!toggler || !nav) return;
+				toggler.addEventListener('click', function(e){
+					// If Bootstrap handled it, it will toggle .show; just ensure aria-expanded is correct.
+					setTimeout(function(){
+						var expanded = nav.classList.contains('show');
+						toggler.setAttribute('aria-expanded', expanded);
+					}, 10);
+
+					// If Bootstrap JS isn't present, perform a manual toggle
+					if (typeof bootstrap === 'undefined'){
+						nav.classList.toggle('show');
+						var expanded = nav.classList.contains('show');
+						toggler.setAttribute('aria-expanded', expanded);
+					}
+				});
+			})();
 		</script>
 	</body>
 </html>
