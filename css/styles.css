@@ -1,0 +1,18 @@
+/* Custom styles for Emerging Logistics landing page */
+:root{
+  --primary:#0d6efd;
+  --muted:#6c757d;
+}
+body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+.hero{
+  background: linear-gradient(90deg, rgba(13,110,253,0.08), rgba(13,110,253,0.04));
+  padding: 4rem 0;
+}
+.hero .badge{background: rgba(13,110,253,0.1); color: var(--primary);}
+.service-icon{font-size: 2rem; color: var(--primary);}
+.card-service{border: none;}
+.features li{margin-bottom: .75rem}
+.footer{background:#f8f9fa; padding:2rem 0;}
+@media (max-width:575.98px){
+  .hero{padding:2.5rem 0}
+}
