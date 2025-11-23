@@ -175,7 +175,7 @@ class FormService {
   }
 
   /**
-   * Display notification alert
+   * Display notification alert with enhanced styling
    */
   showNotification(message, type = 'info') {
     // Create alert container if it doesn't exist
@@ -186,20 +186,42 @@ class FormService {
       this.form.parentElement.insertBefore(alertContainer, this.form);
     }
 
-    // Create alert element
+    // Create alert element with enhanced UI
     const alertId = `alert-${Date.now()}`;
     const alert = document.createElement('div');
     alert.id = alertId;
-    alert.className = `alert alert-${type} alert-dismissible fade show`;
-    alert.role = 'alert';
-    alert.innerHTML = `
-      ${message}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    `;
+    
+    if (type === 'success') {
+      alert.className = 'alert alert-success alert-dismissible fade show border-0 shadow-lg';
+      alert.role = 'alert';
+      alert.innerHTML = `
+        <div class="d-flex align-items-center">
+          <i class="bi bi-check-circle-fill me-3" style="font-size: 1.5rem;"></i>
+          <div>
+            <h5 class="alert-heading mb-1">Message Sent Successfully! ✓</h5>
+            <p class="mb-0">${message}</p>
+          </div>
+          <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      `;
+    } else {
+      alert.className = 'alert alert-danger alert-dismissible fade show border-0 shadow-lg';
+      alert.role = 'alert';
+      alert.innerHTML = `
+        <div class="d-flex align-items-center">
+          <i class="bi bi-exclamation-circle-fill me-3" style="font-size: 1.5rem;"></i>
+          <div>
+            <h5 class="alert-heading mb-1">Error Sending Message</h5>
+            <p class="mb-0">${message}</p>
+          </div>
+          <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      `;
+    }
 
     alertContainer.appendChild(alert);
 
-    // Auto-dismiss success messages after 5 seconds
+    // Auto-dismiss success messages after 6 seconds
     if (type === 'success') {
       setTimeout(() => {
         const el = document.getElementById(alertId);
@@ -207,7 +229,7 @@ class FormService {
           const bsAlert = new bootstrap.Alert(el);
           bsAlert.close();
         }
-      }, 5000);
+      }, 6000);
     }
   }
 
