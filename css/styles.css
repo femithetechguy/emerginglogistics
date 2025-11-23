@@ -130,6 +130,68 @@ body{
 .hero p {animation: slideInUp 0.8s ease-out;}
 .hero .btn {animation: slideInUp 0.9s ease-out;}
 
+/* Hero Truck Graphic */
+.hero-truck-graphic {
+  max-width: 100%;
+  height: auto;
+  animation: slideInRight 0.8s ease-out;
+}
+
+.truck-container {
+  animation: truckDrive 3s ease-in-out infinite;
+}
+
+.motion-lines {
+  animation: motionPulse 2s ease-in-out infinite;
+}
+
+.truck-decorative {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Hero Truck Image */
+.hero-truck-image {
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  animation: slideInRight 0.8s ease-out, float 4s ease-in-out infinite;
+  filter: drop-shadow(0 8px 16px rgba(13, 110, 253, 0.15));
+}
+
+@keyframes truckDrive {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes motionPulse {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.contact-card {
+  animation: slideInUp 1s ease-out;
+}
+
 /* Section titles with icons */
 .section-title {
   position: relative;
@@ -353,4 +415,8 @@ a:not(.nav-link):not(.btn):hover {
   .section-title {font-size: 1.1rem;}
   .card-service {border-top: 2px solid var(--primary);}
   .service-icon {font-size: 1.5rem;}
+  .hero-truck-graphic {
+    max-width: 90%;
+    margin: 1.5rem auto;
+  }
 }
