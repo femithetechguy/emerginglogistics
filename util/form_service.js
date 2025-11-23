@@ -115,8 +115,9 @@ class FormService {
    * Send email via EmailJS
    */
   async sendViaEmailJS(formData) {
-    if (!window.emailjs) {
-      throw new Error('EmailJS library not loaded. Add: <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>');
+    // Check if EmailJS is loaded
+    if (typeof emailjs === 'undefined' || !window.emailjs) {
+      throw new Error('EmailJS library not loaded. Please refresh the page.');
     }
 
     const templateParams = {
@@ -129,13 +130,16 @@ class FormService {
     };
 
     try {
-      await emailjs.send(
+      const response = await emailjs.send(
         this.emailJSServiceId,
         this.emailJSTemplateId,
         templateParams
       );
+      console.log('✓ Email sent successfully:', response);
+      return response;
     } catch (error) {
-      throw new Error(`EmailJS error: ${error.message}`);
+      console.error('✗ EmailJS error:', error);
+      throw new Error(`EmailJS error: ${error.message || error.text}`);
     }
   }
 
