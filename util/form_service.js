@@ -26,10 +26,10 @@ class FormService {
     
     // UI feedback
     this.showLoadingSpinner = config.showLoadingSpinner !== false;
-    this.successMessage = config.successMessage || 'Message sent successfully! We\'ll get back to you soon.';
+    this.successMessage = config.successMessage || 'We\'ll get back to you soon.';
     this.errorMessage = config.errorMessage || 'Failed to send message. Please try again.';
     
-    this.form = null;
+    this.form = null;s
     this.submitButton = null;
     this.originalButtonText = '';
   }
@@ -192,7 +192,7 @@ class FormService {
     alert.id = alertId;
     
     if (type === 'success') {
-      alert.className = 'alert alert-success alert-dismissible fade show border-0 shadow-lg';
+      alert.className = 'border-0 shadow-lg alert alert-success alert-dismissible fade show';
       alert.role = 'alert';
       alert.innerHTML = `
         <div class="d-flex align-items-center">
@@ -205,7 +205,7 @@ class FormService {
         </div>
       `;
     } else {
-      alert.className = 'alert alert-danger alert-dismissible fade show border-0 shadow-lg';
+      alert.className = 'border-0 shadow-lg alert alert-danger alert-dismissible fade show';
       alert.role = 'alert';
       alert.innerHTML = `
         <div class="d-flex align-items-center">
