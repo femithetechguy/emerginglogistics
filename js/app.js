@@ -357,4 +357,13 @@ class LogisticsApp {
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   new LogisticsApp();
+  
+  // Initialize form service with EmailJS
+  const formService = new FormService({
+    recipientEmail: 'femithetchguy@gmail.com',
+    emailJSServiceId: 'service_fttg_gmail',
+    emailJSTemplateId: 'template_fttg',
+    emailJSPublicKey: 'ANmN0gWxEnEHgUCXx'
+  });
+  formService.init();
 });
