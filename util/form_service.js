@@ -29,7 +29,7 @@ class FormService {
     this.successMessage = config.successMessage || 'We\'ll get back to you soon.';
     this.errorMessage = config.errorMessage || 'Failed to send message. Please try again.';
     
-    this.form = null;s
+    this.form = null;
     this.submitButton = null;
     this.originalButtonText = '';
   }
