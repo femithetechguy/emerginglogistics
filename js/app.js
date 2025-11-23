@@ -65,7 +65,7 @@ class LogisticsApp {
       <div class="container">
         <div class="row align-items-center g-4">
           <div class="col-lg-6">
-            <span class="badge rounded-pill mb-3">Trusted Trucking • ${this.data.location}</span>
+            <span class="badge rounded-pill mb-3">Trusted Trucking • ${this.data.business_scope}</span>
             <h1 class="display-6 fw-bold">${this.data.tagline}</h1>
             <p class="text-muted mb-4">${this.data.about}</p>
             <div class="d-flex gap-2 flex-wrap">
@@ -103,6 +103,7 @@ class LogisticsApp {
         </div>
         <div class="col-lg-4">
           <ul class="list-unstyled features">
+            <li><i class="bi bi-globe text-muted me-2"></i> Service Area: ${this.data.business_scope}</li>
             <li><i class="bi bi-upc-scan text-muted me-2"></i> DOT: ${this.data.dot_number}</li>
             <li><i class="bi bi-briefcase text-muted me-2"></i> MC: ${this.data.mc_number}</li>
           </ul>
