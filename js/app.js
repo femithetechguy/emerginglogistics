@@ -240,6 +240,29 @@ class LogisticsApp {
       }
     });
 
+    // Show/hide return to top button on scroll
+    const returnToTopBtn = document.getElementById('returnToTopBtn');
+    if (returnToTopBtn) {
+      let scrollTimeout;
+      const handleScroll = () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          if (window.scrollY > 400) {
+            if (returnToTopBtn.style.display !== 'block') {
+              returnToTopBtn.style.display = 'block';
+            }
+          } else {
+            if (returnToTopBtn.style.display !== 'none') {
+              returnToTopBtn.style.display = 'none';
+            }
+          }
+        }, 10);
+      };
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      // Initial check
+      handleScroll();
+    }
+
     // Smooth scroll links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
