@@ -177,7 +177,7 @@ class LogisticsApp {
           <p class="mb-0"><strong>Address:</strong> ${this.data.contact.address}</p>
         </div>
         <div class="col-md-6">
-          <form id="contactForm" method="POST" action="https://formspree.io/f/myzewodq">
+          <form id="contactForm" name="contactForm">
             <div class="mb-3">
               <label class="form-label">Name</label>
               <input type="text" class="form-control" name="name" placeholder="Your name" required>
@@ -187,10 +187,14 @@ class LogisticsApp {
               <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
             </div>
             <div class="mb-3">
+              <label class="form-label">Phone</label>
+              <input type="tel" class="form-control" name="phone" placeholder="(optional)">
+            </div>
+            <div class="mb-3">
               <label class="form-label">Message</label>
               <textarea class="form-control" name="message" rows="3" placeholder="How can we help?" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="submit" class="btn btn-primary">Send Message</button>
           </form>
         </div>
       </div>
@@ -356,14 +360,17 @@ class LogisticsApp {
 
 // Initialize app when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  new LogisticsApp();
+  const app = new LogisticsApp();
   
-  // Initialize form service with EmailJS
-  const formService = new FormService({
-    recipientEmail: 'femithetchguy@gmail.com',
-    emailJSServiceId: 'service_fttg_gmail',
-    emailJSTemplateId: 'template_fttg',
-    emailJSPublicKey: 'ANmN0gWxEnEHgUCXx'
-  });
-  formService.init();
+  // Wait for form to be rendered, then initialize FormService
+  setTimeout(() => {
+    const formService = new FormService({
+      recipientEmail: 'femithetchguy@gmail.com',
+      formSelector: '#contactForm',
+      emailJSServiceId: 'service_fttg_gmail',
+      emailJSTemplateId: 'template_fttg',
+      emailJSPublicKey: 'ANmN0gWxEnEHgUCXx'
+    });
+    formService.init();
+  }, 100);
 });
