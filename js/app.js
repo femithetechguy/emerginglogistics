@@ -63,20 +63,25 @@ class LogisticsApp {
   renderHero() {
     const heroHtml = `
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-7">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
             <span class="badge rounded-pill mb-3">Trusted Trucking • ${this.data.location}</span>
             <h1 class="display-6 fw-bold">${this.data.tagline}</h1>
             <p class="text-muted mb-4">${this.data.about}</p>
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 flex-wrap">
               <a class="btn btn-primary btn-lg" href="#contact">Request Quote</a>
               <a class="btn btn-outline-secondary btn-lg" href="#services">Our Services</a>
             </div>
           </div>
-          <div class="col-lg-5 mt-4 mt-lg-0">
-            <div class="card shadow-sm">
+          <div class="col-lg-6 d-flex justify-content-center align-items-center">
+            <img src="./img/el_truck1.jpg" alt="Delivery Truck" class="hero-truck-image">
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-lg-6 mx-auto">
+            <div class="card shadow-sm contact-card">
               <div class="card-body">
-                <h5 class="card-title mb-3"><i class="bi bi-telephone me-2 text-primary"></i>Contact</h5>
+                <h5 class="card-title mb-3"><i class="bi bi-telephone me-2 text-primary"></i>Get in Touch</h5>
                 <p class="mb-1"><strong>Phone:</strong> <a href="tel:${this.data.contact.phone.replace(/\D/g, '')}">${this.data.contact.phone}</a></p>
                 <p class="mb-1"><strong>Email:</strong> <a href="mailto:${this.data.contact.email}">${this.data.contact.email}</a></p>
                 <p class="mb-0"><strong>Address:</strong> ${this.data.contact.address}</p>
