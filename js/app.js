@@ -98,7 +98,6 @@ class LogisticsApp {
         </div>
         <div class="col-lg-4">
           <ul class="list-unstyled features">
-            <li><i class="bi bi-check-circle-fill text-success me-2"></i> Founded: ${this.data.founded}</li>
             <li><i class="bi bi-upc-scan text-muted me-2"></i> DOT: ${this.data.dot_number}</li>
             <li><i class="bi bi-briefcase text-muted me-2"></i> MC: ${this.data.mc_number}</li>
           </ul>
