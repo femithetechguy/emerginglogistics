@@ -1,5 +1,6 @@
 {
   "name": "Emerging Logistics",
+  "tagline": "Reliable freight solutions nationwide",
   "location": "Atlanta, Georgia",
   "founded": 2023,
   "dot_number": "406054",
@@ -9,31 +10,71 @@
   "services": [
     {
       "name": "Dry Van Freight",
-      "description": "Secure and efficient transportation of goods across the United States."
+      "description": "Secure and efficient transportation of goods across the United States.",
+      "icon": "box-seam"
     },
     {
       "name": "Refrigerated Freight",
-      "description": "Temperature-controlled transportation for perishable goods."
+      "description": "Temperature-controlled transportation for perishable goods.",
+      "icon": "thermometer-half"
     },
     {
       "name": "Dedicated Fleets",
-      "description": "Customized transportation solutions tailored to meet specific customer needs."
+      "description": "Customized transportation solutions tailored to meet specific customer needs.",
+      "icon": "people-fill"
     },
     {
       "name": "Last Mile Delivery",
-      "description": "Fast and reliable delivery of goods to final destinations."
+      "description": "Fast and reliable delivery of goods to final destinations.",
+      "icon": "pin-map"
     }
   ],
   "why_choose_us": [
-    "Experienced team with extensive industry experience.",
-    "Modern fleet equipped with the latest technology.",
-    "Safety-first approach in operations.",
-    "Customer-centric service and support."
+    {
+      "title": "Experienced Team",
+      "description": "Our team of logistics professionals has extensive experience in the transportation industry.",
+      "icon": "check2-circle"
+    },
+    {
+      "title": "Modern Fleet",
+      "description": "Our fleet of vehicles is well-maintained and equipped with the latest technology to ensure safe and efficient transportation.",
+      "icon": "speedometer2"
+    },
+    {
+      "title": "Safety First",
+      "description": "We prioritize safety in every aspect of our operations, from driver training to vehicle maintenance.",
+      "icon": "shield-lock"
+    },
+    {
+      "title": "Customer-Centric Support",
+      "description": "We are committed to providing exceptional customer service and support.",
+      "icon": "people"
+    }
   ],
   "contact": {
-    "phone": "678-760-4333",
-    "email": "polaniran@gmail.com",
+    "phone": "111-222-3333",
+    "email": "info@emerginglogistics.com",
     "address": "6125 Oakbrook Parkway, Norcross, GA, 30093"
   },
-  "careers": "At Emerging Logistics, we are passionate about building a team of dedicated professionals who share our values and commitment to excellence. If you're looking for a career in logistics or trucking, contact us to explore opportunities."
+  "careers": "At Emerging Logistics, we are passionate about building a team of dedicated professionals who share our values and commitment to excellence. If you're looking for a career in logistics or trucking, contact us to explore opportunities.",
+  "testimonials": [
+    {
+      "quote": "Emerging Logistics delivers on time, every time. Their professionalism and attention to detail are unmatched.",
+      "author": "John Smith",
+      "company": "ABC Retail Inc.",
+      "rating": 5
+    },
+    {
+      "quote": "The best logistics partner we've worked with. Reliable, transparent, and customer-focused.",
+      "author": "Sarah Martinez",
+      "company": "Fresh Foods Co.",
+      "rating": 5
+    },
+    {
+      "quote": "Outstanding service and support. Emerging Logistics has become our go-to partner for all transportation needs.",
+      "author": "Michael Chen",
+      "company": "Tech Supply Ltd.",
+      "rating": 5
+    }
+  ]
 }
