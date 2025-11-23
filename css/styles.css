@@ -1,13 +1,24 @@
 /* Custom styles for Emerging Logistics landing page */
 :root{
-  --primary:#0d6efd;
-  --muted:#6c757d;
-  --light-bg:#f8f9fa;
+  --primary:#1a5490;
+  --primary-light:#2575c7;
+  --accent:#ff8c42;
+  --accent-light:#ffb088;
+  --dark:#1a2332;
+  --muted:#666666;
+  --light-bg:#f5f7fa;
+  --border-color:#e0e4e8;
 }
-html {scroll-behavior: smooth;}
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 body{
   font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  color: #333;
+  color: var(--dark);
+  overflow-x: hidden;
+  touch-action: pan-y;
 }
 
 /* Navbar styling */
@@ -34,7 +45,7 @@ body{
 .nav-link {
   position: relative;
   transition: color 0.3s ease;
-  color: #333 !important;
+  color: var(--dark) !important;
 }
 .nav-link::after {
   content: '';
@@ -54,7 +65,7 @@ body{
   color: var(--primary);
 }
 .nav-link .bi-house-fill:hover {
-  color: #0a58ca;
+  color: var(--primary-light);
   transform: scale(1.2);
 }
 
@@ -102,7 +113,7 @@ body{
 
 /* Hero section */
 .hero{
-  background: linear-gradient(90deg, rgba(13,110,253,0.08), rgba(13,110,253,0.04));
+  background: linear-gradient(90deg, rgba(26,84,144,0.08), rgba(26,84,144,0.04));
   padding: 4rem 0;
   position: relative;
   overflow: hidden;
@@ -114,7 +125,7 @@ body{
   right: -10%;
   width: 400px;
   height: 400px;
-  background: rgba(13,110,253,0.05);
+  background: rgba(26,84,144,0.05);
   border-radius: 50%;
   animation: float 6s ease-in-out infinite;
 }
@@ -301,19 +312,23 @@ body{
   letter-spacing: 0.5px;
 }
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary), #0a58ca);
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
   border: none;
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 16px rgba(13,110,253,0.3);
-  background: linear-gradient(135deg, #0a58ca, var(--primary));
+  box-shadow: 0 8px 16px rgba(26,84,144,0.3);
+  background: linear-gradient(135deg, var(--primary-light), var(--primary));
+}
+.btn-outline-secondary {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 .btn-outline-secondary:hover {
   transform: translateY(-2px);
-  background: #6c757d;
-  border-color: #6c757d;
-  color: white !important;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
 }
 
 /* Links styling */
@@ -324,8 +339,8 @@ a:not(.nav-link):not(.btn) {
   border-bottom: 1px dotted var(--primary);
 }
 a:not(.nav-link):not(.btn):hover {
-  color: #0a58ca;
-  border-bottom-color: #0a58ca;
+  color: var(--primary-light);
+  border-bottom-color: var(--primary-light);
 }
 
 /* List items with icon animation */
@@ -365,7 +380,7 @@ a:not(.nav-link):not(.btn):hover {
 .navbar-nav .nav-link {
   padding: 0.5rem 0;
   margin-bottom: 0.5rem;
-  color: #333 !important;
+  color: var(--dark) !important;
   font-weight: 500;
 }
 .navbar-nav .btn {margin-top: 0.5rem;}
@@ -419,6 +434,36 @@ a:not(.nav-link):not(.btn):hover {
   50% {transform: scale(1.2);}
 }
 
+/* Medium screens (tablets) */
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .hero {
+    padding: 3rem 0;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero-truck-image {
+    max-height: 300px;
+  }
+  .services-truck-image {
+    max-height: 300px;
+  }
+  .btn-lg {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  .d-flex.gap-2 {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  #returnToTopBtn {
+    width: 48px;
+    height: 48px;
+    bottom: 110px;
+    right: 18px;
+  }
+}
+
 /* Large screens */
 @media (min-width: 992px) {
   .navbar-nav .nav-link {
@@ -432,12 +477,52 @@ a:not(.nav-link):not(.btn):hover {
 /* Mobile optimization */
 @media (max-width:575.98px){
   .hero{padding: 2.5rem 0;}
+  .hero h1 {
+    font-size: 1.75rem;
+    line-height: 1.2;
+  }
   .btn-lg {padding: .5rem 1rem; font-size: 1rem;}
+  .d-flex.gap-2 {
+    flex-direction: column;
+  }
+  .d-flex.gap-2 > * {
+    width: 100%;
+  }
   .section-title {font-size: 1.1rem;}
   .card-service {border-top: 2px solid var(--primary);}
   .service-icon {font-size: 1.5rem;}
   .hero-truck-graphic {
     max-width: 90%;
     margin: 1.5rem auto;
+  }
+  .hero-truck-image {
+    max-height: 250px;
+  }
+  .services-truck-image {
+    max-height: 250px;
+    margin-top: 1.5rem;
+  }
+  .contact-card {
+    margin: 0 auto;
+  }
+  .navbar-brand span {
+    font-size: 1rem;
+  }
+  main {
+    padding: 2rem 0;
+  }
+  .row.g-4 {
+    gap: 1.5rem !important;
+  }
+  .card {
+    font-size: 0.95rem;
+  }
+  .card-body {
+    padding: 1.25rem;
+  }
+  #returnToTopBtn {
+    width: 45px;
+    height: 45px;
+    bottom: 100px;
   }
 }
