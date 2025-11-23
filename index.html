@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<!-- Navigation -->
-		<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+		<nav class="bg-white navbar navbar-expand-lg navbar-light border-bottom">
 			<div class="container">
 			<a class="navbar-brand d-flex align-items-center" href="#">
 				<img src="./img/emergingl_logo.jpeg" alt="Emerging Logistics Logo" class="navbar-logo me-2">
@@ -32,7 +32,7 @@
 		</nav>
 
 		<!-- Hero Section -->
-		<header class="hero py-5">
+		<header class="py-5 hero">
 			<div id="heroSection"></div>
 		</header>
 
@@ -40,25 +40,25 @@
 		<main class="py-5">
 			<div class="container">
 				<!-- About Section -->
-				<section id="about" class="mb-5 pb-4"></section>
+				<section id="about" class="pb-4 mb-5"></section>
 
 				<!-- Services Section -->
-				<section id="services" class="mb-5 pb-4"></section>
+				<section id="services" class="pb-4 mb-5"></section>
 
 				<!-- Mission Section -->
-				<section id="mission" class="mb-5 pb-4"></section>
+				<section id="mission" class="pb-4 mb-5"></section>
 
 				<!-- Why Choose Us Section -->
-				<section id="why" class="mb-5 pb-4"></section>
+				<section id="why" class="pb-4 mb-5"></section>
 
 				<!-- Contact Section -->
-				<section id="contact" class="mb-5 pb-4"></section>
+				<section id="contact" class="pb-4 mb-5"></section>
 
 				<!-- Careers Section -->
-				<section id="careers" class="mb-5 pb-4"></section>
+				<section id="careers" class="pb-4 mb-5"></section>
 
 				<!-- Testimonials Section -->
-				<section id="testimonials" class="mb-5 pb-4"></section>
+				<section id="testimonials" class="pb-4 mb-5"></section>
 			</div>
 		</main>
 
@@ -70,14 +70,21 @@
 		<!-- Footer -->
 		<footer class="footer">
 			<div class="container text-center">
-				<img src="./img/emergingl_logo.jpeg" alt="Emerging Logistics Logo" class="footer-logo mb-3">
+				<img src="./img/emergingl_logo.jpeg" alt="Emerging Logistics Logo" class="mb-3 footer-logo">
 				<p class="mb-1">&copy; <span id="year"></span> <span id="footerName">Emerging Logistics</span></p>
 				<small class="text-muted" id="footerLicense">Licensed</small>
 			</div>
 		</footer>
 
-		<!-- Scripts -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="./js/app.js"></script>
-	</body>
+	<!-- Scripts -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="module">
+		import emailjs from 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/+esm';
+		window.emailjs = emailjs;
+		emailjs.init('ANmN0gWxEnEHgUCXx');
+		console.log('✓ EmailJS initialized');
+	</script>
+	<script src="./util/form_service.js"></script>
+	<script src="./js/app.js"></script>
+</body>
 </html>
