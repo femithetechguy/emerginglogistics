@@ -114,21 +114,28 @@ class LogisticsApp {
 
   renderServices() {
     const servicesHtml = `
-      <h3 class="h5 section-title mb-4"><i class="bi bi-box-seam text-primary me-2"></i>Our Services</h3>
-      <div class="row g-3">
-        ${this.data.services.map(service => `
-          <div class="col-md-6 col-lg-3">
-            <div class="card card-service h-100">
-              <div class="card-body d-flex flex-column">
-                <div class="mb-3">
-                  <i class="bi bi-${service.icon} service-icon"></i>
+      <div class="row mb-4 align-items-center">
+        <div class="col-lg-6">
+          <h3 class="h5 section-title mb-4"><i class="bi bi-box-seam text-primary me-2"></i>Our Services</h3>
+          <div class="row g-3">
+            ${this.data.services.map(service => `
+              <div class="col-md-6 col-lg-12">
+                <div class="card card-service h-100">
+                  <div class="card-body d-flex flex-column">
+                    <div class="mb-3">
+                      <i class="bi bi-${service.icon} service-icon"></i>
+                    </div>
+                    <h5 class="card-title">${service.name}</h5>
+                    <p class="card-text text-muted">${service.description}</p>
+                  </div>
                 </div>
-                <h5 class="card-title">${service.name}</h5>
-                <p class="card-text text-muted">${service.description}</p>
               </div>
-            </div>
+            `).join('')}
           </div>
-        `).join('')}
+        </div>
+        <div class="col-lg-6 d-flex justify-content-center align-items-center mt-4 mt-lg-0">
+          <img src="./img/el_truck2.jpg" alt="Logistics Services" class="services-truck-image">
+        </div>
       </div>
     `;
     document.getElementById('services').innerHTML = servicesHtml;
