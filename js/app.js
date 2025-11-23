@@ -15,7 +15,7 @@ class LogisticsApp {
 
   async loadData() {
     try {
-      const response = await fetch('/json/app.json');
+      const response = await fetch('./json/app.json');
       this.data = await response.json();
       console.log('✓ Company data loaded:', this.data);
     } catch (err) {
