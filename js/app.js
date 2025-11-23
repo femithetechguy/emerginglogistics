@@ -10,7 +10,6 @@ class LogisticsApp {
     this.setupNavigation();
     this.renderContent();
     this.setupAnimations();
-    this.setupFormHandling();
   }
 
   async loadData() {
@@ -289,44 +288,6 @@ class LogisticsApp {
         }
       });
     });
-  }
-
-  setupFormHandling() {
-    // Delayed form handling (since it's rendered after init)
-    setTimeout(() => {
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          
-          const formData = new FormData(contactForm);
-          const submitBtn = contactForm.querySelector('button[type="submit"]');
-          const originalText = submitBtn.textContent;
-          
-          submitBtn.textContent = 'Sending...';
-          submitBtn.disabled = true;
-          
-          fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {'Accept': 'application/json'}
-          })
-          .then(res => {
-            if (res.ok) {
-              alert('✓ Thanks! Your message has been sent. We\'ll get back to you soon.');
-              contactForm.reset();
-            } else {
-              alert('✗ Error sending message. Please try again.');
-            }
-          })
-          .catch(err => alert('✗ Error: ' + err.message))
-          .finally(() => {
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-          });
-        });
-      }
-    }, 100);
   }
 
   setupAnimations() {
