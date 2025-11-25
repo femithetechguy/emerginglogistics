@@ -1,3 +1,17 @@
+/**
+ * Emerging Logistics - Dynamic Content Loader
+ * 
+ * This application loads all page content from json/app.json and dynamically
+ * renders it into the DOM. It handles:
+ * - Company information (name, contact, services, testimonials, etc.)
+ * - Navigation and menu interactions
+ * - Smooth scroll animations and transitions
+ * - Form handling with EmailJS integration (via FormService)
+ * 
+ * Architecture: Single-page application (SPA) with data-driven rendering
+ * Form Service: Handles contact form submission via EmailJS
+ */
+
 // App Configuration & Dynamic Content Loader
 class LogisticsApp {
   constructor() {
@@ -5,6 +19,7 @@ class LogisticsApp {
     this.init();
   }
 
+  // Initialize app: load data, setup UI, render content
   async init() {
     await this.loadData();
     this.setupNavigation();
@@ -12,6 +27,10 @@ class LogisticsApp {
     this.setupAnimations();
   }
 
+  /**
+   * Load company data from JSON file
+   * This is the single source of truth for all page content
+   */
   async loadData() {
     try {
       const response = await fetch('./json/app.json');
@@ -23,6 +42,10 @@ class LogisticsApp {
     }
   }
 
+  /**
+   * Render all page content from JSON data
+   * Updates meta tags, titles, and renders each section
+   */
   renderContent() {
     if (!this.data) return;
 
@@ -59,6 +82,9 @@ class LogisticsApp {
     this.renderTestimonials();
   }
 
+  /**
+   * Render hero section with company tagline, truck image, and CTA buttons
+   */
   renderHero() {
     const heroHtml = `
       <div class="container">
@@ -93,6 +119,9 @@ class LogisticsApp {
     document.getElementById('heroSection').innerHTML = heroHtml;
   }
 
+  /**
+   * Render about section with company description and key details (DOT, MC, Service Area)
+   */
   renderAbout() {
     const aboutHtml = `
       <div class="row">
@@ -112,6 +141,10 @@ class LogisticsApp {
     document.getElementById('about').innerHTML = aboutHtml;
   }
 
+  /**
+   * Render services section with list of service offerings
+   * Displays truck image alongside service cards
+   */
   renderServices() {
     const servicesHtml = `
       <div class="row mb-4 align-items-center">
@@ -141,6 +174,9 @@ class LogisticsApp {
     document.getElementById('services').innerHTML = servicesHtml;
   }
 
+  /**
+   * Render mission statement section
+   */
   renderMission() {
     const missionHtml = `
       <h3 class="h5 section-title"><i class="bi bi-target text-primary me-2"></i>Our Mission</h3>
@@ -149,6 +185,9 @@ class LogisticsApp {
     document.getElementById('mission').innerHTML = missionHtml;
   }
 
+  /**
+   * Render why choose us section with key differentiators
+   */
   renderWhyChooseUs() {
     const whyHtml = `
       <h3 class="h5 section-title"><i class="bi bi-award text-primary me-2"></i>Why Choose Us</h3>
@@ -166,6 +205,10 @@ class LogisticsApp {
     document.getElementById('why').innerHTML = whyHtml;
   }
 
+  /**
+   * Render contact section with contact info and contact form
+   * Form is handled by FormService with EmailJS integration
+   */
   renderContact() {
     const contactHtml = `
       <h3 class="h5 section-title"><i class="bi bi-chat-dots text-primary me-2"></i>Contact Us</h3>
@@ -201,6 +244,9 @@ class LogisticsApp {
     document.getElementById('contact').innerHTML = contactHtml;
   }
 
+  /**
+   * Render careers section with job opportunities
+   */
   renderCareers() {
     const careersHtml = `
       <h3 class="h5 section-title"><i class="bi bi-people-fill text-primary me-2"></i>Join Our Team</h3>
@@ -209,6 +255,9 @@ class LogisticsApp {
     document.getElementById('careers').innerHTML = careersHtml;
   }
 
+  /**
+   * Render testimonials section with client feedback and star ratings
+   */
   renderTestimonials() {
     const testimonialsHtml = `
       <h3 class="h5 section-title mb-4"><i class="bi bi-chat-quote text-primary me-2"></i>What Our Clients Say</h3>
@@ -231,6 +280,10 @@ class LogisticsApp {
     document.getElementById('testimonials').innerHTML = testimonialsHtml;
   }
 
+  /**
+   * Setup navigation interactions
+   * Handles mobile menu toggle, smooth scrolling, and return-to-top button visibility
+   */
   setupNavigation() {
     // Mobile menu toggle
     const toggler = document.querySelector('.navbar-toggler');
@@ -290,6 +343,10 @@ class LogisticsApp {
     });
   }
 
+  /**
+   * Setup scroll animations and fade-in effects
+   * Uses IntersectionObserver for performance-optimized scroll-triggered animations
+   */
   setupAnimations() {
     // Add fade-in animation on page load
     window.addEventListener('load', function() {
@@ -319,7 +376,12 @@ class LogisticsApp {
   }
 }
 
-// Initialize app when DOM is ready
+/**
+ * App Initialization
+ * Runs when DOM is ready:
+ * 1. Create LogisticsApp instance (loads data, renders content)
+ * 2. Initialize FormService for contact form handling with EmailJS
+ */
 document.addEventListener('DOMContentLoaded', () => {
   const app = new LogisticsApp();
   
