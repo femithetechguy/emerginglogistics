@@ -446,3 +446,24 @@ document.addEventListener('DOMContentLoaded', () => {
     formService.init();
   }, 100);
 });
+
+/**
+ * Handle logo click animation
+ * Adds pulse animation class and scrolls to top smoothly
+ */
+function handleLogoClick(event) {
+  event.preventDefault();
+  const logo = document.querySelector('.navbar-logo');
+  
+  // Remove animation class if it exists
+  logo.classList.remove('logo-click-pulse');
+  
+  // Trigger reflow to restart animation
+  void logo.offsetWidth;
+  
+  // Add animation class
+  logo.classList.add('logo-click-pulse');
+  
+  // Scroll to top smoothly
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}

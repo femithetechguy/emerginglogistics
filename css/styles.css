@@ -35,11 +35,29 @@ body{
   height: 50px;
   width: auto;
   object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.navbar-logo.logo-click-pulse {
+  animation: logoPulse 0.6s ease;
 }
 
 @media (max-width: 576px) {
   .navbar-logo {
     height: 40px;
+  }
+}
+
+/* Logo click animation */
+@keyframes logoPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15) rotate(5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
   }
 }
 
