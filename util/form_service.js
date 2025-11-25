@@ -7,7 +7,7 @@
 
 class FormService {
   constructor(config = {}) {
-    this.recipientEmail = config.recipientEmail || 'femithetchguy@gmail.com';
+    this.recipientEmail = config.recipientEmail || 'info@emergingl.com';
     this.formSelector = config.formSelector || 'form[name="contactForm"]';
     this.submitButtonSelector = config.submitButtonSelector || 'button[type="submit"]';
     
@@ -120,12 +120,26 @@ class FormService {
       throw new Error('EmailJS library not loaded. Please refresh the page.');
     }
 
+    const now = new Date();
+    const timeString = now.toLocaleString('en-US', { 
+      year: 'numeric', 
+      month: '2-digit', 
+      day: '2-digit', 
+      hour: '2-digit', 
+      minute: '2-digit', 
+      second: '2-digit',
+      hour12: true,
+      timeZoneName: 'short'
+    });
+
     const templateParams = {
       to_email: this.recipientEmail,
       from_name: formData.get('name'),
       from_email: formData.get('email'),
       phone: formData.get('phone') || 'Not provided',
       message: formData.get('message'),
+      time: timeString,
+      subject: `New Inquiry from ${formData.get('email')}`,
       reply_to: formData.get('email')
     };
 

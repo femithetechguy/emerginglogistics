@@ -456,10 +456,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Wait for form to be rendered, then initialize FormService
   setTimeout(() => {
     const formService = new FormService({
-      recipientEmail: 'femithetchguy@gmail.com',
+      recipientEmail: 'info@emergingl.com',
       formSelector: '#contactForm',
-      emailJSServiceId: 'service_fttg_gmail',
-      emailJSTemplateId: 'template_fttg',
+      emailJSServiceId: 'service_emergingl_info1',
+      emailJSTemplateId: 'template_emergingl_info1',
       emailJSPublicKey: 'ANmN0gWxEnEHgUCXx'
     });
     formService.init();
