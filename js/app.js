@@ -52,6 +52,13 @@ class LogisticsApp {
     // Update page title and meta
     document.getElementById('pageTitle').textContent = `${this.data.name} | Professional Freight & Logistics`;
     document.getElementById('pageDesc').textContent = this.data.about || 'Professional freight & logistics solutions.';
+    
+    // Update Open Graph meta tags for social sharing
+    document.getElementById('ogTitle').setAttribute('content', `${this.data.name} | Professional Freight & Logistics`);
+    document.getElementById('ogDesc').setAttribute('content', this.data.tagline || 'Reliable freight solutions nationwide');
+    document.getElementById('twitterTitle').setAttribute('content', this.data.name);
+    document.getElementById('twitterDesc').setAttribute('content', this.data.tagline || 'Reliable freight solutions nationwide');
+    
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('footerName').textContent = this.data.name;
     document.getElementById('footerLicense').textContent = `Licensed DOT: ${this.data.dot_number} • MC: ${this.data.mc_number}`;
