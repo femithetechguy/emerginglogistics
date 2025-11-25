@@ -55,6 +55,11 @@ class LogisticsApp {
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('footerName').textContent = this.data.name;
     document.getElementById('footerLicense').textContent = `Licensed DOT: ${this.data.dot_number} • MC: ${this.data.mc_number}`;
+    if (this.data.appdev) {
+      document.getElementById('appdevName').textContent = this.data.appdev.name;
+      document.getElementById('appdevLink').href = `https://${this.data.appdev.url}`;
+      document.getElementById('appdevLink').target = '_blank';
+    }
 
     // Render Hero Section
     this.renderHero();
