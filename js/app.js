@@ -284,20 +284,46 @@ class LogisticsApp {
    * Handles mobile menu toggle, smooth scrolling, and return-to-top button visibility
    */
   setupNavigation() {
-    // Mobile menu toggle
+    // Mobile menu toggle with X icon
     const toggler = document.querySelector('.navbar-toggler');
+    const closeIcon = document.querySelector('.navbar-close-icon');
+    const hamburgerIcon = document.querySelector('.navbar-toggler-icon');
     const nav = document.getElementById('navMenu');
-    if (!toggler || !nav) return;
+    if (!toggler || !nav || !closeIcon || !hamburgerIcon) return;
 
-    toggler.addEventListener('click', function(e){
-      nav.classList.toggle('show');
-      var expanded = nav.classList.contains('show');
-      toggler.setAttribute('aria-expanded', expanded);
-      try {
-        if (typeof bootstrap !== 'undefined' && bootstrap.Collapse){
-          var bs = bootstrap.Collapse.getInstance(nav) || new bootstrap.Collapse(nav, {toggle: false});
-        }
-      } catch(err){}
+    // Hide X icon by default, show hamburger
+    closeIcon.style.display = 'none';
+
+    toggler.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const isOpen = nav.classList.contains('show');
+      
+      if (isOpen) {
+        // Close menu - show hamburger, hide X
+        nav.classList.remove('show');
+        toggler.setAttribute('aria-expanded', 'false');
+        hamburgerIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+        console.log('📱 Mobile menu CLOSED (X clicked)');
+      } else {
+        // Open menu - hide hamburger, show X
+        nav.classList.add('show');
+        toggler.setAttribute('aria-expanded', 'true');
+        hamburgerIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
+        console.log('📱 Mobile menu OPENED');
+      }
+    });
+
+    // Close menu when clicking a nav link
+    document.querySelectorAll('#navMenu .nav-link').forEach(link => {
+      link.addEventListener('click', function() {
+        nav.classList.remove('show');
+        toggler.setAttribute('aria-expanded', 'false');
+        hamburgerIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+        console.log('📱 Mobile menu CLOSED (nav link clicked)');
+      });
     });
 
     window.addEventListener('resize', function(){
@@ -330,13 +356,19 @@ class LogisticsApp {
       handleScroll();
     }
 
-    // Smooth scroll links
+    // Smooth scroll links and close mobile menu on click
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (href !== '#' && document.querySelector(href)) {
           e.preventDefault();
           document.querySelector(href).scrollIntoView({behavior: 'smooth'});
+          
+          // Close mobile menu after clicking a link
+          if (window.innerWidth < 992 && nav.classList.contains('show')) {
+            nav.classList.remove('show');
+            toggler.setAttribute('aria-expanded', false);
+          }
         }
       });
     });
