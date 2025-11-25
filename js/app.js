@@ -52,9 +52,21 @@ class LogisticsApp {
     // Update page title and meta
     document.getElementById('pageTitle').textContent = `${this.data.name} | Professional Freight & Logistics`;
     document.getElementById('pageDesc').textContent = this.data.about || 'Professional freight & logistics solutions.';
+    
+    // Update Open Graph meta tags for social sharing
+    document.getElementById('ogTitle').setAttribute('content', `${this.data.name} | Professional Freight & Logistics`);
+    document.getElementById('ogDesc').setAttribute('content', this.data.tagline || 'Reliable freight solutions nationwide');
+    document.getElementById('twitterTitle').setAttribute('content', this.data.name);
+    document.getElementById('twitterDesc').setAttribute('content', this.data.tagline || 'Reliable freight solutions nationwide');
+    
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('footerName').textContent = this.data.name;
     document.getElementById('footerLicense').textContent = `Licensed DOT: ${this.data.dot_number} • MC: ${this.data.mc_number}`;
+    if (this.data.appdev) {
+      document.getElementById('appdevName').textContent = this.data.appdev.name;
+      document.getElementById('appdevLink').href = `https://${this.data.appdev.url}`;
+      document.getElementById('appdevLink').target = '_blank';
+    }
 
     // Render Hero Section
     this.renderHero();
@@ -89,8 +101,9 @@ class LogisticsApp {
       <div class="container">
         <div class="row align-items-center g-4">
           <div class="col-lg-6">
-            <span class="badge rounded-pill mb-3">Trusted Trucking • ${this.data.business_scope}</span>
+            <h2 class="hero-company-name">${this.data.name}</h2>
             <h1 class="display-6 fw-bold">${this.data.tagline}</h1>
+            <span class="badge rounded-pill mb-3">Trusted Trucking • ${this.data.business_scope}</span>
             <p class="text-muted mb-4">${this.data.about}</p>
             <div class="d-flex gap-2 flex-wrap">
               <a class="btn btn-primary btn-lg" href="#contact">Request Quote</a>
@@ -376,11 +389,16 @@ class LogisticsApp {
         if (href !== '#' && document.querySelector(href)) {
           e.preventDefault();
           document.querySelector(href).scrollIntoView({behavior: 'smooth'});
+          // Don't add hash to URL - keeps it clean
+          window.history.pushState(null, '', window.location.pathname);
           
           // Close mobile menu after clicking a link
           if (window.innerWidth < 992 && nav.classList.contains('show')) {
             nav.classList.remove('show');
             toggler.setAttribute('aria-expanded', false);
+            hamburgerIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+            console.log('📱 Mobile menu CLOSED (nav link clicked)');
           }
         }
       });
@@ -441,3 +459,24 @@ document.addEventListener('DOMContentLoaded', () => {
     formService.init();
   }, 100);
 });
+
+/**
+ * Handle logo click animation
+ * Adds pulse animation class and scrolls to top smoothly
+ */
+function handleLogoClick(event) {
+  event.preventDefault();
+  const logo = document.querySelector('.navbar-logo');
+  
+  // Remove animation class if it exists
+  logo.classList.remove('logo-click-pulse');
+  
+  // Trigger reflow to restart animation
+  void logo.offsetWidth;
+  
+  // Add animation class
+  logo.classList.add('logo-click-pulse');
+  
+  // Scroll to top smoothly
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}

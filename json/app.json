@@ -76,5 +76,9 @@
       "company": "Tech Supply Ltd.",
       "rating": 5
     }
-  ]
+  ],
+  "appdev": {
+    "name": "FTTG Solutions",
+    "url": "fttgsolutions.com"
+  }
 }
