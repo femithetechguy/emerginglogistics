@@ -89,8 +89,9 @@ class LogisticsApp {
       <div class="container">
         <div class="row align-items-center g-4">
           <div class="col-lg-6">
-            <span class="badge rounded-pill mb-3">Trusted Trucking • ${this.data.business_scope}</span>
+            <h2 class="hero-company-name">${this.data.name}</h2>
             <h1 class="display-6 fw-bold">${this.data.tagline}</h1>
+            <span class="badge rounded-pill mb-3">Trusted Trucking • ${this.data.business_scope}</span>
             <p class="text-muted mb-4">${this.data.about}</p>
             <div class="d-flex gap-2 flex-wrap">
               <a class="btn btn-primary btn-lg" href="#contact">Request Quote</a>
