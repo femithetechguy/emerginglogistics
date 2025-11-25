@@ -55,6 +55,27 @@ body{
   transform: rotate(90deg);
 }
 
+/* Mobile menu styling */
+.navbar-menu {
+  max-height: 100vh;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+.navbar-menu:not(.show) {
+  display: none;
+}
+
+.navbar-menu.show {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .navbar-menu {
+    display: flex !important;
+  }
+}
+
 .nav-link {
   position: relative;
   transition: color 0.3s ease;
