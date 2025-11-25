@@ -294,23 +294,31 @@ class LogisticsApp {
     // Hide X icon by default, show hamburger
     closeIcon.style.display = 'none';
 
+    // Helper function to close menu
+    const closeMenu = () => {
+      nav.classList.remove('show');
+      toggler.setAttribute('aria-expanded', 'false');
+      hamburgerIcon.style.display = 'block';
+      closeIcon.style.display = 'none';
+    };
+
+    // Helper function to open menu
+    const openMenu = () => {
+      nav.classList.add('show');
+      toggler.setAttribute('aria-expanded', 'true');
+      hamburgerIcon.style.display = 'none';
+      closeIcon.style.display = 'block';
+    };
+
     toggler.addEventListener('click', function(e) {
       e.stopPropagation();
       const isOpen = nav.classList.contains('show');
       
       if (isOpen) {
-        // Close menu - show hamburger, hide X
-        nav.classList.remove('show');
-        toggler.setAttribute('aria-expanded', 'false');
-        hamburgerIcon.style.display = 'block';
-        closeIcon.style.display = 'none';
-        console.log('📱 Mobile menu CLOSED (X clicked)');
+        closeMenu();
+        console.log('📱 Mobile menu CLOSED (hamburger clicked)');
       } else {
-        // Open menu - hide hamburger, show X
-        nav.classList.add('show');
-        toggler.setAttribute('aria-expanded', 'true');
-        hamburgerIcon.style.display = 'none';
-        closeIcon.style.display = 'block';
+        openMenu();
         console.log('📱 Mobile menu OPENED');
       }
     });
@@ -318,12 +326,17 @@ class LogisticsApp {
     // Close menu when clicking a nav link
     document.querySelectorAll('#navMenu .nav-link').forEach(link => {
       link.addEventListener('click', function() {
-        nav.classList.remove('show');
-        toggler.setAttribute('aria-expanded', 'false');
-        hamburgerIcon.style.display = 'block';
-        closeIcon.style.display = 'none';
+        closeMenu();
         console.log('📱 Mobile menu CLOSED (nav link clicked)');
       });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.navbar') && nav.classList.contains('show')) {
+        closeMenu();
+        console.log('📱 Mobile menu CLOSED (clicked outside)');
+      }
     });
 
     window.addEventListener('resize', function(){
