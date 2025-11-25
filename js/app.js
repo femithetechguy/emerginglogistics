@@ -52,7 +52,6 @@ class LogisticsApp {
     // Update page title and meta
     document.getElementById('pageTitle').textContent = `${this.data.name} | Professional Freight & Logistics`;
     document.getElementById('pageDesc').textContent = this.data.about || 'Professional freight & logistics solutions.';
-    document.getElementById('brandName').textContent = this.data.name;
     document.getElementById('year').textContent = new Date().getFullYear();
     document.getElementById('footerName').textContent = this.data.name;
     document.getElementById('footerLicense').textContent = `Licensed DOT: ${this.data.dot_number} • MC: ${this.data.mc_number}`;
