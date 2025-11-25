@@ -376,11 +376,16 @@ class LogisticsApp {
         if (href !== '#' && document.querySelector(href)) {
           e.preventDefault();
           document.querySelector(href).scrollIntoView({behavior: 'smooth'});
+          // Don't add hash to URL - keeps it clean
+          window.history.pushState(null, '', window.location.pathname);
           
           // Close mobile menu after clicking a link
           if (window.innerWidth < 992 && nav.classList.contains('show')) {
             nav.classList.remove('show');
             toggler.setAttribute('aria-expanded', false);
+            hamburgerIcon.style.display = 'block';
+            closeIcon.style.display = 'none';
+            console.log('📱 Mobile menu CLOSED (nav link clicked)');
           }
         }
       });
