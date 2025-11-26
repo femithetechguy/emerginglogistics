@@ -14,11 +14,6 @@
       "icon": "box-seam"
     },
     {
-      "name": "Refrigerated Freight",
-      "description": "Temperature-controlled transportation for perishable goods.",
-      "icon": "thermometer-half"
-    },
-    {
       "name": "Dedicated Fleets",
       "description": "Customized transportation solutions tailored to meet specific customer needs.",
       "icon": "people-fill"
